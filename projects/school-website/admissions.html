@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions | Eternal Academy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .admissions-section { padding: 80px 0; }
+        .admission-hero { background: linear-gradient(135deg, #0ea5e9, #1e40af); color: white; padding: 60px; border-radius: 15px; text-align: center; margin-bottom: 50px; }
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 50px 0; }
+        .step-card { text-align: center; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; }
+        .step-number { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; }
+        .step-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+        .fee-structure { background: #f8fafc; padding: 40px; border-radius: 15px; margin: 50px 0; }
+        .fee-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .fee-table th, .fee-table td { padding: 15px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        .fee-table th { background: white; color: var(--primary); }
+        .fee-table tr:hover { background: white; }
+        .age-criteria { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .age-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .age-class { color: var(--primary); font-weight: 600; margin-bottom: 10px; }
+        .required-docs { background: #fffbeb; padding: 30px; border-radius: 15px; margin: 40px 0; }
+        .doc-list { columns: 2; column-gap: 40px; }
+        .doc-item { margin-bottom: 15px; break-inside: avoid; }
+        .important-dates { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 40px 0; }
+        .date-card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid var(--primary); }
+        .date { color: var(--primary); font-weight: 600; margin-bottom: 10px; }
+        .admission-form { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin: 50px 0; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--primary); }
+        .scholarship-info { background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 40px; border-radius: 15px; margin: 50px 0; }
+        .virtual-tour-btn { display: inline-flex; align-items: center; gap: 10px; background: white; color: var(--primary); padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; margin-top: 20px; }
+        @media (max-width: 768px) {
+            .form-row, .doc-list { grid-template-columns: 1fr; columns: 1; }
+            .admission-hero { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> (+91) 98765 43210</span>
+                    <span><i class="fas fa-envelope"></i> admissions@eternalacademy.in</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">EA</div>
+                    <div class="logo-text">
+                        <span class="school-name">Eternal Academy</span>
+                        <span class="tagline">Admissions Open 2024-25</span>
+                    </div>
+                </a>
+                
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="campus.html">Campus</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="admissions.html" class="active">Admissions</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <a href="login.html" class="btn btn-outline">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="#apply" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Apply Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Admissions 2024-25</h1>
+            <p>Begin your journey towards excellence</p>
+        </div>
+    </section>
+
+    <!-- BREADCRUMB -->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Admissions</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <section class="admissions-section">
+        <div class="container">
+            <!-- HERO MESSAGE -->
+            <div class="admission-hero">
+                <h2 style="color: white; margin-bottom: 20px;">Limited Seats Available</h2>
+                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px;">
+                    Admissions open for Nursery to Class 11. Early applications receive priority consideration.
+                </p>
+                <a href="#apply" class="btn btn-primary" style="background: white; color: var(--primary); padding: 15px 40px;">
+                    <i class="fas fa-rocket"></i> Apply Online Now
+                </a>
+            </div>
+
+            <!-- ADMISSION STEPS -->
+            <div>
+                <h2 style="text-align: center; margin-bottom: 20px;">Admission Process</h2>
+                <p style="text-align: center; color: #64748b; margin-bottom: 40px;">Simple 4-step process to join Eternal Academy</p>
+                
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Application</h3>
+                        <p>Submit online application form with required documents</p>
+                        <p><strong>Time:</strong> 15 minutes</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3>Assessment</h3>
+                        <p>Written test & interaction (for classes 1 onwards)</p>
+                        <p><strong>Duration:</strong> 1-2 hours</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Interview</h3>
+                        <p>Child & parent interaction with admission committee</p>
+                        <p><strong>Duration:</strong> 30 minutes</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Confirmation</h3>
+                        <p>Offer letter & fee payment to secure admission</p>
+                        <p><strong>Process:</strong> 3-5 days</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AGE CRITERIA -->
+            <div>
+                <h2 style="margin-bottom: 30px;">Age Criteria for 2024-25</h2>
+                
+                <div class="age-criteria">
+                    <div class="age-card">
+                        <div class="age-class">Nursery</div>
+                        <p><strong>Age:</strong> 3+ years<br>
+                        <strong>As on:</strong> 31 Mar 2024<br>
+                        <strong>Seats:</strong> 40</p>
+                    </div>
+                    
+                    <div class="age-card">
+                        <div class="age-class">LKG</div>
+                        <p><strong>Age:</strong> 4+ years<br>
+                        <strong>As on:</strong> 31 Mar 2024<br>
+                        <strong>Seats:</strong> 40</p>
+                    </div>
+                    
+                    <div class="age-card">
+                        <div class="age-class">UKG</div>
+                        <p><strong>Age:</strong> 5+ years<br>
+                        <strong>As on:</strong> 31 Mar 2024<br>
+                        <strong>Seats:</strong> 40</p>
+                    </div>
+                    
+                    <div class="age-card">
+                        <div class="age-class">Class 1</div>
+                        <p><strong>Age:</strong> 6+ years<br>
+                        <strong>As on:</strong> 31 Mar 2024<br>
+                        <strong>Seats:</strong> 45</p>
+                    </div>
+                    
+                    <div class="age-card">
+                        <div class="age-class">Class 6</div>
+                        <p><strong>Age:</strong> 11+ years<br>
+                        <strong>Seats:</strong> 50<br>
+                        <strong>Assessment:</strong> Required</p>
+                    </div>
+                    
+                    <div class="age-card">
+                        <div class="age-class">Class 9</div>
+                        <p><strong>Age:</strong> 14+ years<br>
+                        <strong>Seats:</strong> 60<br>
+                        <strong>Streams:</strong> Science/Commerce</p>
+                    </div>
+                    
+                    <div class="age-card">
+                        <div class="age-class">Class 11</div>
+                        <p><strong>Age:</strong> 16+ years<br>
+                        <strong>Seats:</strong> 120<br>
+                        <strong>Streams:</strong> Science/Commerce/Humanities</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FEE STRUCTURE -->
+            <div class="fee-structure">
+                <h2 style="margin-bottom: 30px;">Fee Structure 2024-25</h2>
+                
+                <table class="fee-table">
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Admission Fee</th>
+                            <th>Tuition Fee (Monthly)</th>
+                            <th>Annual Charges</th>
+                            <th>Total Annual</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nursery - UKG</td>
+                            <td>₹15,000</td>
+                            <td>₹3,500</td>
+                            <td>₹12,000</td>
+                            <td>₹57,000</td>
+                        </tr>
+                        <tr>
+                            <td>Classes 1-5</td>
+                            <td>₹18,000</td>
+                            <td>₹4,000</td>
+                            <td>₹15,000</td>
+                            <td>₹72,000</td>
+                        </tr>
+                        <tr>
+                            <td>Classes 6-8</td>
+                            <td>₹20,000</td>
+                            <td>₹4,500</td>
+                            <td>₹18,000</td>
+                            <td>₹83,000</td>
+                        </tr>
+                        <tr>
+                            <td>Classes 9-10</td>
+                            <td>₹25,000</td>
+                            <td>₹5,000</td>
+                            <td>₹20,000</td>
+                            <td>₹95,000</td>
+                        </tr>
+                        <tr>
+                            <td>Classes 11-12</td>
+                            <td>₹30,000</td>
+                            <td>₹5,500</td>
+                            <td>₹25,000</td>
+                            <td>₹1,11,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div style="margin-top: 30px; background: white; padding: 20px; border-radius: 10px;">
+                    <h4><i class="fas fa-info-circle" style="color: var(--primary);"></i> Additional Information</h4>
+                    <p>• Transport fee: ₹2,000-3,000 per month (based on distance)<br>
+                    • Uniform & books: Approximately ₹8,000 annually<br>
+                    • Fee can be paid in quarterly/half-yearly/annual installments<br>
+                    • Sibling discount: 10% on tuition fee for second child</p>
+                </div>
+            </div>
+
+            <!-- SCHOLARSHIPS -->
+            <div class="scholarship-info">
+                <h2 style="color: white; margin-bottom: 20px;">Scholarships Available</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 20px;">Merit-based scholarships for outstanding students</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px;">
+                    <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: white;">Merit Scholarship</h4>
+                        <p style="color: rgba(255,255,255,0.9);">Up to 50% fee waiver for top rankers</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: white;">Sports Scholarship</h4>
+                        <p style="color: rgba(255,255,255,0.9);">25-75% scholarship for state/national level athletes</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: white;">Sibling Scholarship</h4>
+                        <p style="color: rgba(255,255,255,0.9);">10% discount for siblings studying together</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: white;">Staff Scholarship</h4>
+                        <p style="color: rgba(255,255,255,0.9);">Special concessions for children of staff members</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REQUIRED DOCUMENTS -->
+            <div class="required-docs">
+                <h2 style="margin-bottom: 20px;">Required Documents</h2>
+                
+                <div class="doc-list">
+                    <div class="doc-item">
+                        <i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i>
+                        <span>Birth Certificate (Original + 2 copies)</span>
+                    </div>
+                    <div class="doc-item">
+                        <i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i>
+                        <span>Aadhar Card of Child & Parents</span>
+                    </div>
+                    <div class="doc-item">
+                        <i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i>
+                        <span>Transfer Certificate (For Class 2 onwards)</span>
+                    </div>
+                    <div class="doc-item">
+                        <i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i>
+                        <span>Previous Year Report Card</span>
+                    </div>
+                    <div class="doc-item">
+                        <i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i>
+                        <span>Passport Size Photos (4 child, 2 each parent)</span>
+                    </div>
+                    <div class="doc-item">
+                        <i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i>
+                        <span>Address Proof (Electricity bill/Ration card)</span>
+                    </div>
+                    <div class="doc-item">
+                        <i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i>
+                        <span>Caste Certificate (If applicable)</span>
+                    </div>
+                    <div class="doc-item">
+                        <i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i>
+                        <span>Medical Fitness Certificate</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IMPORTANT DATES -->
+            <div>
+                <h2 style="margin-bottom: 30px;">Important Dates</h2>
+                
+                <div class="important-dates">
+                    <div class="date-card">
+                        <div class="date">1 December 2023</div>
+                        <h4>Admissions Open</h4>
+                        <p>Online registration begins for 2024-25 session</p>
+                    </div>
+                    
+                    <div class="date-card">
+                        <div class="date">15 January 2024</div>
+                        <h4>First Round Assessment</h4>
+                        <p>Written test for classes 1-9 & 11</p>
+                    </div>
+                    
+                    <div class="date-card">
+                        <div class="date">31 January 2024</div>
+                        <h4>Last Date for Application</h4>
+                        <p>Final date to submit admission forms</p>
+                    </div>
+                    
+                    <div class="date-card">
+                        <div class="date">15 February 2024</div>
+                        <h4>Interview Results</h4>
+                        <p>First list of selected candidates</p>
+                    </div>
+                    
+                    <div class="date-card">
+                        <div class="date">1 March 2024</div>
+                        <h4>Fee Payment Deadline</h4>
+                        <p>Last date to pay fees for first list</p>
+                    </div>
+                    
+                    <div class="date-card">
+                        <div class="date">1 April 2024</div>
+                        <h4>New Session Begins</h4>
+                        <p>Orientation for new students</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APPLICATION FORM -->
+            <div id="apply" class="admission-form">
+                <h2 style="text-align: center; margin-bottom: 40px;">Online Admission Form</h2>
+                
+                <form id="admissionForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Student's Full Name *</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth *</label>
+                            <input type="date" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Class Applying For *</label>
+                            <select required>
+                                <option value="">Select Class</option>
+                                <option>Nursery</option>
+                                <option>LKG</option>
+                                <option>UKG</option>
+                                <option>Class 1</option>
+                                <option>Class 2</option>
+                                <option>Class 3</option>
+                                <option>Class 4</option>
+                                <option>Class 5</option>
+                                <option>Class 6</option>
+                                <option>Class 7</option>
+                                <option>Class 8</option>
+                                <option>Class 9</option>
+                                <option>Class 10</option>
+                                <option>Class 11 (Science)</option>
+                                <option>Class 11 (Commerce)</option>
+                                <option>Class 11 (Humanities)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Previous School (If any)</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Father's Name *</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Mother's Name *</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Parent's Phone Number *</label>
+                            <input type="tel" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Parent's Email *</label>
+                            <input type="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Full Address *</label>
+                        <textarea rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Any Special Requirements/Remarks</label>
+                        <textarea rows="2" placeholder="Medical conditions, learning needs, etc."></textarea>
+                    </div>
+                    
+                    <div style="background: #f8fafc; padding: 20px; border-radius: 10px; margin: 30px 0;">
+                        <h4><i class="fas fa-upload"></i> Upload Documents</h4>
+                        <div style="margin-top: 15px;">
+                            <input type="file" multiple style="padding: 10px 0;">
+                            <p style="color: #64748b; font-size: 0.9rem; margin-top: 10px;">You can upload documents now or bring them during verification</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 40px;">
+                        <button type="submit" class="btn btn-primary" style="padding: 15px 50px; font-size: 1.1rem;">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
+                        <p style="color: #64748b; margin-top: 15px;">Application fee: ₹500 (to be paid after form submission)</p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- VIRTUAL TOUR -->
+            <div style="text-align: center; margin-top: 60px;">
+                <h2>Can't Visit Campus?</h2>
+                <p>Take a virtual tour of our facilities</p>
+                <a href="virtual-tour.html" class="virtual-tour-btn">
+                    <i class="fas fa-vr-cardboard"></i> Start Virtual Campus Tour
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Admissions Office</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Building 786, Sgr., JK</p>
+                    <p><i class="fas fa-phone"></i> (+91) 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> admissions@eternalacademy.in</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9 AM - 4 PM</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Admissions</h3>
+                    <ul>
+                        <li><a href="#process">Process</a></li>
+                        <li><a href="#fees">Fee Structure</a></li>
+                        <li><a href="#scholarship">Scholarships</a></li>
+                        <li><a href="#dates">Important Dates</a></li>
+                        <li><a href="#documents">Documents</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About School</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="campus.html">Campus Tour</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Visit Us</h3>
+                    <p>Schedule a campus visit:</p>
+                    <a href="contact.html#visit" class="btn btn-primary" style="display: inline-block; margin-top: 15px;">
+                        <i class="fas fa-calendar"></i> Book Campus Tour
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Eternal Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Form submission
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! Your application has been submitted. Our admissions team will contact you within 3 working days.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

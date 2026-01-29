@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics | Eternal Academy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .academics-content { padding: 60px 0; }
+        .curriculum-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+        .curriculum-card { background: white; padding: 30px; border-radius: 10px; box-shadow: var(--shadow); text-align: center; }
+        .curriculum-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+        .departments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin: 40px 0; }
+        .dept-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+        .dept-header { background: var(--primary); color: white; padding: 20px; }
+        .dept-body { padding: 20px; }
+        .lab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+        .lab-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+        .lab-img { height: 200px; overflow: hidden; }
+        .lab-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .lab-card:hover .lab-img img { transform: scale(1.05); }
+        .lab-info { padding: 20px; }
+        .academic-calendar { background: white; border-radius: 10px; padding: 30px; box-shadow: var(--shadow); margin: 40px 0; }
+        .calendar-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .calendar-table th, .calendar-table td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+        .calendar-table th { background: #f8fafc; color: var(--primary); }
+        .highlight { background: #f0f7ff !important; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> (+91) 98765 43210</span>
+                    <span><i class="fas fa-envelope"></i> school@eternalacademy.in</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">EA</div>
+                    <div class="logo-text">
+                        <span class="school-name">Eternal Academy</span>
+                        <span class="tagline">Excellence in Education</span>
+                    </div>
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">School</a></li>
+                        <li class="nav-dropdown">
+                            <a href="academics.html" class="active">Academics <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-content">
+                                <a href="curriculum.html">Curriculum</a>
+                                <a href="departments.html">Departments</a>
+                                <a href="labs.html">Laboratories</a>
+                                <a href="library.html">Library</a>
+                                <a href="results.html">Results</a>
+                            </div>
+                        </li>
+                        <li><a href="campus.html">Campus</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <a href="admissions.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Enroll</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Academic Programs</h1>
+            <p>Rigorous curriculum | Innovative teaching | Holistic development</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="academics.html">Academics</a></li>
+                <li>Overview</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="academics-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Curriculum</h2>
+                <p>Comprehensive educational framework from Pre-primary to Senior Secondary</p>
+            </div>
+
+            <div class="curriculum-grid">
+                <div class="curriculum-card">
+                    <div class="curriculum-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Pre-primary (Nursery-KG)</h3>
+                    <p>Play-based learning, sensory development, basic literacy & numeracy</p>
+                    <p><strong>Age:</strong> 3-5 years</p>
+                </div>
+                <div class="curriculum-card">
+                    <div class="curriculum-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Primary (Classes 1-5)</h3>
+                    <p>Foundational skills in all subjects with activity-based learning</p>
+                    <p><strong>Subjects:</strong> 6 core subjects</p>
+                </div>
+                <div class="curriculum-card">
+                    <div class="curriculum-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Middle School (6-8)</h3>
+                    <p>Subject specialization begins with practical applications</p>
+                    <p><strong>Subjects:</strong> 8+ subjects with labs</p>
+                </div>
+                <div class="curriculum-card">
+                    <div class="curriculum-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Secondary (9-10)</h3>
+                    <p>CBSE curriculum with Science, Commerce & Humanities streams</p>
+                    <p><strong>Board:</strong> CBSE</p>
+                </div>
+                <div class="curriculum-card">
+                    <div class="curriculum-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Senior Secondary (11-12)</h3>
+                    <p>Specialized streams: Science, Commerce, Humanities</p>
+                    <p><strong>Streams:</strong> 3 specialized</p>
+                </div>
+            </div>
+
+            <div class="section-title" style="margin-top: 60px;">
+                <h2>Academic Departments</h2>
+                <p>Expert faculty across all disciplines</p>
+            </div>
+
+            <div class="departments-grid">
+                <div class="dept-card">
+                    <div class="dept-header" style="background: #3b82f6;">
+                        <h3><i class="fas fa-atom"></i> Science</h3>
+                    </div>
+                    <div class="dept-body">
+                        <p>Physics, Chemistry, Biology, Mathematics</p>
+                        <p><strong>Head:</strong> Dr. Ramesh Singh</p>
+                        <p>6 laboratories | Research projects</p>
+                    </div>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-header" style="background: #10b981;">
+                        <h3><i class="fas fa-calculator"></i> Mathematics</h3>
+                    </div>
+                    <div class="dept-body">
+                        <p>Pure & Applied Mathematics</p>
+                        <p><strong>Head:</strong> Mrs. Sunita Kapoor</p>
+                        <p>Math Lab | Olympiad training</p>
+                    </div>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-header" style="background: #8b5cf6;">
+                        <h3><i class="fas fa-globe-asia"></i> Humanities</h3>
+                    </div>
+                    <div class="dept-body">
+                        <p>History, Geography, Political Science, Economics</p>
+                        <p><strong>Head:</strong> Mr. Anil Verma</p>
+                        <p>Field trips | Research papers</p>
+                    </div>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-header" style="background: #f59e0b;">
+                        <h3><i class="fas fa-language"></i> Languages</h3>
+                    </div>
+                    <div class="dept-body">
+                        <p>English, Hindi, Sanskrit, French</p>
+                        <p><strong>Head:</strong> Mrs. Meena Joshi</p>
+                        <p>Language Lab | Debate club</p>
+                    </div>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-header" style="background: #ef4444;">
+                        <h3><i class="fas fa-paint-brush"></i> Fine Arts</h3>
+                    </div>
+                    <div class="dept-body">
+                        <p>Music, Dance, Drama, Visual Arts</p>
+                        <p><strong>Head:</strong> Mrs. Priya Desai</p>
+                        <p>Art studio | Annual exhibition</p>
+                    </div>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-header" style="background: #06b6d4;">
+                        <h3><i class="fas fa-laptop-code"></i> Computer Science</h3>
+                    </div>
+                    <div class="dept-body">
+                        <p>Programming, AI, Web Development</p>
+                        <p><strong>Head:</strong> Mr. Vikas Mehta</p>
+                        <p>4 computer labs | Coding club</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title" style="margin-top: 60px;">
+                <h2>Laboratories & Facilities</h2>
+                <p>State-of-the-art infrastructure for practical learning</p>
+            </div>
+
+            <div class="lab-grid">
+                <div class="lab-card">
+                    <div class="lab-img">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Physics Lab">
+                    </div>
+                    <div class="lab-info">
+                        <h3>Physics Laboratory</h3>
+                        <p>Modern equipment for mechanics, optics & electronics experiments</p>
+                        <p><strong>Capacity:</strong> 30 students</p>
+                    </div>
+                </div>
+                <div class="lab-card">
+                    <div class="lab-img">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chemistry Lab">
+                    </div>
+                    <div class="lab-info">
+                        <h3>Chemistry Laboratory</h3>
+                        <p>Fully equipped with fume hoods, digital balances & safety gear</p>
+                        <p><strong>Experiments:</strong> 50+ practicals</p>
+                    </div>
+                </div>
+                <div class="lab-card">
+                    <div class="lab-img">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Biology Lab">
+                    </div>
+                    <div class="lab-info">
+                        <h3>Biology Laboratory</h3>
+                        <p>Microscopes, specimens, models for comprehensive study</p>
+                        <p><strong>Microscopes:</strong> 25 digital</p>
+                    </div>
+                </div>
+                <div class="lab-card">
+                    <div class="lab-img">
+                        <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Computer Lab">
+                    </div>
+                    <div class="lab-info">
+                        <h3>Computer Laboratory</h3>
+                        <p>60+ computers with latest software & high-speed internet</p>
+                        <p><strong>Software:</strong> Programming, Design, Office</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="academic-calendar">
+                <h2>Academic Calendar 2023-24</h2>
+                <table class="calendar-table">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Events</th>
+                            <th>Examinations</th>
+                            <th>Holidays</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>April</td>
+                            <td>New Session Begins, Orientation</td>
+                            <td>-</td>
+                            <td>Good Friday</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>June-July</td>
+                            <td>Summer Vacation</td>
+                            <td>-</td>
+                            <td>Summer Break</td>
+                        </tr>
+                        <tr>
+                            <td>August</td>
+                            <td>Independence Day, Sports Day</td>
+                            <td>Unit Test 1</td>
+                            <td>Raksha Bandhan</td>
+                        </tr>
+                        <tr>
+                            <td>September</td>
+                            <td>Teachers' Day, Science Exhibition</td>
+                            <td>Half Yearly Exams</td>
+                            <td>Janmashtami</td>
+                        </tr>
+                        <tr>
+                            <td>October</td>
+                            <td>Gandhi Jayanti, Cultural Fest</td>
+                            <td>-</td>
+                            <td>Dussehra, Diwali</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>December</td>
+                            <td>Annual Day, Christmas Celebration</td>
+                            <td>Unit Test 2</td>
+                            <td>Christmas</td>
+                        </tr>
+                        <tr>
+                            <td>January</td>
+                            <td>Republic Day, Art Exhibition</td>
+                            <td>Pre-Board (Class 10, 12)</td>
+                            <td>Republic Day</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>March</td>
+                            <td>Farewell, Result Declaration</td>
+                            <td>Annual Exams</td>
+                            <td>Holi</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 20px; color: var(--gray); font-size: 0.9rem;">
+                    <i class="fas fa-info-circle"></i> Note: Calendar subject to change. Please check notices for updates.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Eternal Academy</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Building 786, Sgr., JK, India</p>
+                    <p><i class="fas fa-phone"></i> (+91) 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> school@eternalacademy.in</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Academics</h3>
+                    <ul>
+                        <li><a href="curriculum.html">Curriculum</a></li>
+                        <li><a href="departments.html">Departments</a></li>
+                        <li><a href="labs.html">Laboratories</a></li>
+                        <li><a href="library.html">Library</a></li>
+                        <li><a href="results.html">Results</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="syllabus.html">Syllabus</a></li>
+                        <li><a href="timetable.html">Time Table</a></li>
+                        <li><a href="question-papers.html">Question Papers</a></li>
+                        <li><a href="ebooks.html">E-Books</a></li>
+                        <li><a href="scholarships.html">Scholarships</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Eternal Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

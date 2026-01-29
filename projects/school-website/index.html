@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternal Academy - ABC Complex, Kashmir | Education for Life</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔰</text></svg>">
+    <style>
+        /* Custom styles for new navbar design */
+        :root {
+            --nav-bg: rgba(30, 58, 138, 0.95);
+            --nav-bg-scrolled: rgba(30, 58, 138, 0.98);
+        }
+        
+        /* Main Header - Redesigned */
+        .main-header {
+            background: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+        
+        .main-header.scrolled {
+            background: var(--nav-bg-scrolled);
+            position: fixed;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Logo Styling */
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.02);
+        }
+        
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #ffffff, #dbeafe);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+            border: 2px solid white;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text .school-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-text .tagline {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 300;
+        }
+        
+        /* Top Right Navigation */
+        .top-right-nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        /* Compact Main Navigation */
+        .compact-nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 8px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .compact-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .compact-nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 8px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .compact-nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .compact-nav a.active {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Dropdown in compact nav */
+        .compact-dropdown {
+            position: relative;
+        }
+        
+        .compact-dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            min-width: 180px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        
+        .compact-dropdown:hover .compact-dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(5px);
+        }
+        
+        .compact-dropdown-content a {
+            color: var(--dark);
+            padding: 12px 20px;
+            border-radius: 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: block;
+            white-space: nowrap;
+        }
+        
+        .compact-dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        
+        .compact-dropdown-content a:hover {
+            background: #f8fafc;
+            color: var(--primary);
+        }
+        
+        /* Header Actions Buttons */
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .header-actions .btn {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+        
+        .btn-nav-primary {
+            background: linear-gradient(135deg, var(--accent), #fbbf24);
+            color: var(--dark);
+            border: none;
+        }
+        
+        .btn-nav-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-nav-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
+        }
+        
+        .btn-nav-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        
+        /* Hero Section with Slideshow */
+        .hero-slideshow {
+            position: relative;
+            height: 85vh;
+            min-height: 600px;
+            overflow: hidden;
+        }
+        
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-1 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1593693399506-7e5c7f2947ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        .slide-2 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        .slide-3 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        .slide-4 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        /* Slideshow Controls */
+        .slideshow-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slide-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slide-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        .slide-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slide-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .slide-prev {
+            left: 30px;
+        }
+        
+        .slide-next {
+            right: 30px;
+        }
+        
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            color: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 100px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .compact-nav a {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+            
+            .header-actions .btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            
+            .logo-text .school-name {
+                font-size: 1.7rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .top-right-nav {
+                gap: 15px;
+            }
+            
+            .compact-nav {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            /* Mobile Menu */
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background: var(--nav-bg-scrolled);
+                backdrop-filter: blur(10px);
+                padding: 100px 30px 30px;
+                transition: right 0.4s ease;
+                z-index: 999;
+                overflow-y: auto;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            }
+            
+            .mobile-menu.active {
+                right: 0;
+            }
+            
+            .mobile-menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .mobile-menu li {
+                margin-bottom: 10px;
+            }
+            
+            .mobile-menu a {
+                display: block;
+                color: white;
+                text-decoration: none;
+                padding: 15px;
+                border-radius: 8px;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                border-left: 3px solid transparent;
+            }
+            
+            .mobile-menu a:hover,
+            .mobile-menu a.active {
+                background: rgba(255, 255, 255, 0.1);
+                border-left: 3px solid var(--accent);
+            }
+            
+            .mobile-menu-close {
+                position: absolute;
+                top: 30px;
+                right: 30px;
+                background: transparent;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-slideshow {
+                height: 70vh;
+                min-height: 500px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .header-actions {
+                display: none;
+            }
+            
+            .logo-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.5rem;
+            }
+            
+            .logo-text .school-name {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-slideshow {
+                height: 60vh;
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Header with Top Right Navigation -->
+    <header class="main-header">
+        <div class="container header-content">
+            <!-- Logo on Left -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span>EA</span>
+                </div>
+                <div class="logo-text">
+                    <span class="school-name">ETERNAL ACADEMY</span>
+                    <span class="tagline">Education Beyond Boundaries</span>
+                </div>
+            </a>
+
+            <!-- Top Right Navigation -->
+            <div class="top-right-nav">
+                <!-- Compact Navigation -->
+                <nav class="compact-nav">
+                    <ul>
+                        <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                        <li class="compact-dropdown">
+                            <a href="about.html"><i class="fas fa-info-circle"></i> About <i class="fas fa-chevron-down"></i></a>
+                            <div class="compact-dropdown-content">
+                                <a href="about.html#history">Our History</a>
+                                <a href="about.html#vision">Vision & Mission</a>
+                                <a href="about.html#leadership">Leadership</a>
+                                <a href="campus.html">Campus Tour</a>
+                            </div>
+                        </li>
+                        <li><a href="academics.html"><i class="fas fa-graduation-cap"></i> Academics</a></li>
+                        <li><a href="admissions.html"><i class="fas fa-user-plus"></i> Admissions</a></li>
+                        <li><a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Action Buttons -->
+                <div class="header-actions">
+                    <a href="admissions.html" class="btn btn-nav-outline">Apply</a>
+                    <a href="contact.html" class="btn btn-nav-primary">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="academics.html"><i class="fas fa-graduation-cap"></i> Academics</a></li>
+            <li><a href="admissions.html"><i class="fas fa-user-plus"></i> Admissions</a></li>
+            <li><a href="campus.html"><i class="fas fa-school"></i> Campus</a></li>
+            <li><a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+            <li><a href="notices.html"><i class="fas fa-bullhorn"></i> Notices</a></li>
+            <li><a href="careers.html"><i class="fas fa-briefcase"></i> Careers</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+        <div style="margin-top: 30px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="tel:+919876543210" class="btn btn-nav-primary" style="width: 100%; text-align: center; margin-bottom: 10px;">
+                <i class="fas fa-phone-alt"></i> +91 98765 43210
+            </a>
+            <a href="mailto:support@eternalacademy.in" class="btn btn-nav-outline" style="width: 100%; text-align: center;">
+                <i class="fas fa-envelope"></i> Email Us
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section with Slideshow -->
+    <section class="hero-slideshow">
+        <!-- Slideshow Images -->
+        <div class="slideshow-container" id="slideshow">
+            <div class="slide slide-1 active"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+            <div class="slide slide-4"></div>
+        </div>
+
+        <!-- Slideshow Controls -->
+        <button class="slide-nav slide-prev" id="prevSlide">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slide-nav slide-next" id="nextSlide">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Slide Dots -->
+        <div class="slideshow-controls">
+            <div class="slide-dot active" data-slide="0"></div>
+            <div class="slide-dot" data-slide="1"></div>
+            <div class="slide-dot" data-slide="2"></div>
+            <div class="slide-dot" data-slide="3"></div>
+        </div>
+
+        <!-- Hero Content Over Slideshow -->
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to Eternal Academy</h1>
+                <p class="hero-subtitle">
+                    A premier educational institution in the heart of Kashmir, 
+                    blending traditional values with modern learning to shape 
+                    future leaders and global citizens.
+                </p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
+                    <a href="admissions.html" class="btn btn-nav-primary" style="padding: 12px 35px;">
+                        <i class="fas fa-user-graduate"></i> Start Your Journey
+                    </a>
+                    <a href="campus.html" class="btn btn-nav-outline" style="padding: 12px 35px;">
+                        <i class="fas fa-video"></i> Virtual Tour
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rest of your content remains the same from previous code -->
+    <!-- Quick Stats Bar -->
+    <section style="background: var(--primary); color: white; padding: 30px 0;">
+        <div class="container">
+            <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center;">
+                <div class="stat-item">
+                    <h3 style="color: white; margin-bottom: 5px;">25+</h3>
+                    <p style="color: #cbd5e1;">Years of Excellence</p>
+                </div>
+                <div class="stat-item">
+                    <h3 style="color: white; margin-bottom: 5px;">2,500+</h3>
+                    <p style="color: #cbd5e1;">Students Enrolled</p>
+                </div>
+                <div class="stat-item">
+                    <h3 style="color: white; margin-bottom: 5px;">150+</h3>
+                    <p style="color: #cbd5e1;">Expert Faculty</p>
+                </div>
+                <div class="stat-item">
+                    <h3 style="color: white; margin-bottom: 5px;">95%</h3>
+                    <p style="color: #cbd5e1;">University Placement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Eternal Academy?</h2>
+                <p>We blend traditional Kashmiri values with modern educational practices</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #0f766e, #14b8a6);">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Kashmiri Heritage</h3>
+                    <p>Our curriculum integrates local culture, history, and environmental awareness unique to the Kashmir region.</p>
+                    <a href="about.html" style="color: var(--primary); text-decoration: none; font-weight: 500;">Learn More →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #7c3aed, #8b5cf6);">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3>Global Curriculum</h3>
+                    <p>International teaching methods combined with CBSE/State board to prepare students for global challenges.</p>
+                    <a href="academics.html" style="color: var(--primary); text-decoration: none; font-weight: 500;">Explore Academics →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Holistic Development</h3>
+                    <p>Focus on sports, arts, environmental projects, and community service alongside academic excellence.</p>
+                    <a href="campus.html" style="color: var(--primary); text-decoration: none; font-weight: 500;">Campus Life →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Events Section -->
+    <section class="news" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest Updates</h2>
+                <p>Stay informed about what's happening at Eternal Academy</p>
+            </div>
+
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Annual Science Fair">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date"><i class="far fa-calendar-alt"></i> March 15, 2024</div>
+                        <h3>Annual Science & Innovation Fair</h3>
+                        <p>Students showcase projects on sustainable technology and Kashmiri ecological preservation.</p>
+                        <a href="events.html" class="btn btn-outline" style="margin-top: 15px; padding: 8px 20px;">Read More</a>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Admissions Open">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date"><i class="far fa-calendar-alt"></i> April 1, 2024</div>
+                        <h3>2024-25 Admissions Open</h3>
+                        <p>Applications now accepted for Kindergarten to Class XII. Limited seats available.</p>
+                        <a href="admissions.html" class="btn btn-primary" style="margin-top: 15px; padding: 8px 20px;">Apply Now</a>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sports Day">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date"><i class="far fa-calendar-alt"></i> February 28, 2024</div>
+                        <h3>Inter-School Sports Championship</h3>
+                        <p>Our students won 12 medals in the Kashmir Valley Inter-School Sports Meet.</p>
+                        <a href="events.html" class="btn btn-outline" style="margin-top: 15px; padding: 8px 20px;">View Results</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="notices.html" class="btn btn-primary" style="padding: 12px 35px;">
+                    <i class="fas fa-bullhorn"></i> View All Notices
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section style="background: linear-gradient(135deg, var(--primary), #2563eb); color: white; padding: 80px 0; text-align: center;">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 20px;">Ready to Join Our Family?</h2>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; color: #e2e8f0;">
+                Schedule a campus visit or speak with our admissions team to learn how Eternal Academy can shape your child's future.
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="contact.html" class="btn" style="background: white; color: var(--primary); padding: 12px 30px;">
+                    <i class="fas fa-map-marker-alt"></i> Plan Your Visit
+                </a>
+                <a href="tel:+919876543210" class="btn btn-outline" style="border-color: white; color: white; padding: 12px 30px;">
+                    <i class="fas fa-phone-alt"></i> Call Now: +91 98765 43210
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Eternal Academy</h3>
+                    <p style="color: #cbd5e1; margin-bottom: 20px;">Providing quality education in Kashmir for over two decades, blending tradition with innovation.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" class="social-icon" style="color: #cbd5e1; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" style="color: #cbd5e1; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon" style="color: #cbd5e1; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" style="color: #cbd5e1; font-size: 1.2rem;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="campus.html">Campus Life</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Important Pages</h3>
+                    <ul>
+                        <li><a href="events.html">Events & Calendar</a></li>
+                        <li><a href="notices.html">Notices & Circulars</a></li>
+                        <li><a href="careers.html">Careers at EA</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
+                            <i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--secondary); margin-top: 5px;"></i>
+                            <span style="color: #cbd5e1;">ABC Complex, Street 123,<br>Kashmir, India</span>
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <i class="fas fa-phone-alt" style="margin-right: 10px; color: var(--secondary);"></i>
+                            <span style="color: #cbd5e1;">+91 98765 43210</span>
+                        </li>
+                        <li style="display: flex; align-items: center;">
+                            <i class="fas fa-envelope" style="margin-right: 10px; color: var(--secondary);"></i>
+                            <span style="color: #cbd5e1;">support@eternalacademy.in</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Eternal Academy. All rights reserved. | <a href="#" style="color: #94a3b8;">Privacy Policy</a> | <a href="#" style="color: #94a3b8;">Terms of Service</a></p>
+                <p style="font-size: 0.9rem; margin-top: 10px;">A heritage institution in the heart of Kashmir</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.main-header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+        });
+
+        mobileMenuClose.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slide-dot');
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+
+        function showSlide(n) {
+            // Reset all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Handle circular navigation
+            if (n >= slides.length) currentSlide = 0;
+            else if (n < 0) currentSlide = slides.length - 1;
+            else currentSlide = n;
+            
+            // Show current slide
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Dot click events
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Auto slide every 5 seconds
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        // Pause auto-slide on hover
+        const slideshow = document.getElementById('slideshow');
+        slideshow.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+
+        slideshow.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+    </script>
+</body>
+</html>

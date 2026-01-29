@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternal Uchiha | Premium Japanese Cuisine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap">
+    <style>
+        :root {
+            --primary-orange: #ff5a1f;
+            --light-orange: #ff8c42;
+            --dark-orange: #d03801;
+            --white: #ffffff;
+            --off-white: #fdf6f0;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e5e5e5;
+            --dark-gray: #1f2937;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--off-white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            color: var(--primary-orange);
+            font-size: 2.5rem;
+            filter: drop-shadow(0 2px 4px rgba(255, 90, 31, 0.3));
+            transition: var(--transition);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-gray);
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            color: var(--primary-orange);
+            position: relative;
+        }
+
+        .logo-text span::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-orange);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover .logo-text span::after {
+            transform: scaleX(1);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .cart-toggle {
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.6rem;
+            color: var(--dark-gray);
+            transition: var(--transition);
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        .cart-toggle:hover {
+            color: var(--primary-orange);
+            background-color: rgba(255, 90, 31, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--primary-orange);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 240, 0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1578474846511-04ba529f0b88?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 90, 31, 0.05) 0%, transparent 100%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary-orange);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(255, 90, 31, 0.2);
+            z-index: -1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #555;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary-orange), var(--light-orange));
+            color: white;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 90, 31, 0.3);
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 90, 31, 0.4);
+            background: linear-gradient(to right, var(--dark-orange), var(--primary-orange));
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-gray);
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-orange);
+            border-radius: 2px;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .category-tab {
+            padding: 12px 28px;
+            background-color: var(--light-gray);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-tab.active, .category-tab:hover {
+            background-color: var(--primary-orange);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 90, 31, 0.3);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background-color: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid var(--medium-gray);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .menu-item-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover .menu-item-img {
+            transform: scale(1.05);
+        }
+
+        .menu-item-content {
+            padding: 25px;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .menu-item-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-gray);
+        }
+
+        .menu-item-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+        }
+
+        .menu-item-desc {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .menu-item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            background-color: var(--primary-orange);
+            color: white;
+        }
+
+        .quantity-display {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .add-to-cart {
+            background-color: var(--primary-orange);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--dark-orange);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 90, 31, 0.3);
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 100%;
+            max-width: 450px;
+            height: 100vh;
+            background-color: var(--white);
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .cart-header h3 {
+            font-size: 1.8rem;
+            color: var(--dark-gray);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--dark-gray);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-cart:hover {
+            background-color: var(--light-gray);
+            color: var(--primary-orange);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--primary-orange);
+            font-weight: 600;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .remove-item:hover {
+            color: var(--primary-orange);
+            background-color: rgba(255, 90, 31, 0.1);
+        }
+
+        .cart-footer {
+            padding: 25px;
+            border-top: 1px solid var(--medium-gray);
+            background-color: var(--light-gray);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .cart-total-amount {
+            color: var(--primary-orange);
+            font-size: 1.8rem;
+        }
+
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 18px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .checkout-btn:hover {
+            background-color: #1da851;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background-color: var(--white);
+            color: var(--dark-gray);
+            padding: 18px 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transform: translateX(150%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            max-width: 350px;
+        }
+
+        .notification.active {
+            transform: translateX(0);
+        }
+
+        .notification-icon {
+            color: var(--primary-orange);
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--primary-orange);
+        }
+
+        .footer-contact h4, .footer-hours h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .contact-icon {
+            color: var(--primary-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cart-sidebar {
+                max-width: 100%;
+                right: -100%;
+            }
+            
+            .notification {
+                top: 20px;
+                right: 20px;
+                left: 20px;
+                max-width: calc(100% - 40px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-container {
+                padding: 15px 0;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .category-tabs {
+                gap: 10px;
+            }
+            
+            .category-tab {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .menu-item-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="logo-text">Eternal <span>Uchiha</span></div>
+            </div>
+            <div class="nav-right">
+                <button class="cart-toggle" id="cartToggle">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Authentic Japanese Cuisine at <span>Eternal Uchiha</span></h1>
+            <p>Experience the art of Japanese cooking with our carefully crafted dishes made from the freshest ingredients. Order now and have your meal delivered to your doorstep or ready for pickup.</p>
+            <a href="#menu" class="cta-button">Browse Our Menu <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Specialties</h2>
+            </div>
+            
+            <div class="category-tabs" id="categoryTabs">
+                <!-- Tabs will be generated by JavaScript -->
+            </div>
+            
+            <div class="menu-grid" id="menuGrid">
+                <!-- Menu items will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be generated by JavaScript -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="cart-total-amount" id="cartTotal">₹0</span>
+            </div>
+            <a class="checkout-btn" id="checkoutBtn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Place Order via WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="notification-text" id="notificationText">Item added to cart!</div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Eternal <span>Uchiha</span></div>
+                    <p>Experience authentic Japanese cuisine crafted with precision and passion. Our chefs use traditional techniques with the finest ingredients to bring you an unforgettable dining experience.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt contact-icon"></i>
+                        <span>+91 7780870376</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <span>123 Shinobi Street, Konoha District</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock contact-icon"></i>
+                        <span>Open Daily: 11:00 AM - 10:00 PM</span>
+                    </div>
+                </div>
+                <div class="footer-hours">
+                    <h4>Opening Hours</h4>
+                    <p>Monday - Friday: 11:00 AM - 10:00 PM</p>
+                    <p>Saturday - Sunday: 11:00 AM - 11:00 PM</p>
+                    <p>Holidays: 12:00 PM - 9:00 PM</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Eternal Uchiha Japanese Restaurant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Data
+        const menuData = {
+            categories: ["All", "Sushi", "Ramen", "Appetizers", "Desserts", "Drinks"],
+            items: [
+                { 
+                    id: 1, 
+                    name: "Dragon Roll", 
+                    category: "Sushi", 
+                    price: 480, 
+                    description: "Fresh eel and cucumber topped with avocado and special sauce.", 
+                    image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                },
+                { 
+                    id: 2, 
+                    name: "Spicy Tuna Roll", 
+                    category: "Sushi", 
+                    price: 420, 
+                    description: "Spicy tuna with cucumber and sesame seeds.", 
+                    image: "https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                },
+                { 
+                    id: 3, 
+                    name: "Salmon Nigiri", 
+                    category: "Sushi", 
+                    price: 320, 
+                    description: "Fresh salmon slices over seasoned rice.", 
+                    image: "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                },
+                { 
+                    id: 4, 
+                    name: "Tonkotsu Ramen", 
+                    category: "Ramen", 
+                    price: 520, 
+                    description: "Rich pork broth with chashu pork, bamboo shoots, and egg.", 
+                    image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                },
+                { 
+                    id: 5, 
+                    name: "Miso Ramen", 
+                    category: "Ramen", 
+                    price: 480, 
+                    description: "Savory miso broth with corn, bean sprouts, and pork.", 
+                    image: "https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                },
+                { 
+                    id: 6, 
+                    name: "Shoyu Ramen", 
+                    category: "Ramen", 
+                    price: 460, 
+                    description: "Soy sauce based broth with chicken, nori, and green onions.", 
+                    image: "https://images.unsplash.com/photo-1591814468924-caf88d1232e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                },
+                { 
+                    id: 7, 
+                    name: "Edamame", 
+                    category: "Appetizers", 
+                    price: 180, 
+                    description: "Steamed soybeans sprinkled with sea salt.", 
+                    image: "https://images.unsplash.com/photo-1607301408851-06c7c1c6c7c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                },
+                { 
+                    id: 8, 
+                    name: "Gyoza", 
+                    category: "Appetizers", 
+                    price: 220, 
+                    description: "Pan-fried pork and vegetable dumplings.", 
+                    image: "https://images.unsplash.com/photo-1585032223-4755-4d26-a117f6c4c0f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                },
+                { 
+                    id: 9, 
+                    name: "Agedashi Tofu", 
+                    category: "Appetizers", 
+                    price: 200, 
+                    description: "Deep-fried tofu in a savory dashi broth.", 
+                    image: "https://images.unsplash.com/photo-1563379091339-03246963d9d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                },
+                { 
+                    id: 10, 
+                    name: "Matcha Ice Cream", 
+                    category: "Desserts", 
+                    price: 180, 
+                    description: "Traditional green tea flavored ice cream.", 
+                    image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                },
+                { 
+                    id: 11, 
+                    name: "Mochi Platter", 
+                    category: "Desserts", 
+                    price: 240, 
+                    description: "Assorted rice cakes with red bean, matcha, and strawberry.", 
+                    image: "https://images.unsplash.com/photo-1567375698349-41da3c1977c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                },
+                { 
+                    id: 12, 
+                    name: "Sakura Soda", 
+                    category: "Drinks", 
+                    price: 150, 
+                    description: "Refreshing cherry blossom flavored soda.", 
+                    image: "https://images.unsplash.com/photo-1536746803623-cef87080bfc9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                },
+                { 
+                    id: 13, 
+                    name: "Japanese Green Tea", 
+                    category: "Drinks", 
+                    price: 120, 
+                    description: "Premium sencha green tea, hot or cold.", 
+                    image: "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                },
+                { 
+                    id: 14, 
+                    name: "Calpico Soda", 
+                    category: "Drinks", 
+                    price: 140, 
+                    description: "Refreshing Japanese lactic drink with soda.", 
+                    image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                }
+            ]
+        };
+
+        // Cart State
+        let cart = JSON.parse(localStorage.getItem('eternalUchihaCart')) || [];
+        let activeCategory = 'All';
+
+        // DOM Elements
+        const categoryTabs = document.getElementById('categoryTabs');
+        const menuGrid = document.getElementById('menuGrid');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartToggle = document.getElementById('cartToggle');
+        const closeCart = document.getElementById('closeCart');
+        const overlay = document.getElementById('overlay');
+        const cartItems = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notificationText');
+
+        // Initialize the app
+        function init() {
+            renderCategoryTabs();
+            renderMenuItems();
+            updateCartUI();
+            
+            // Event Listeners
+            cartToggle.addEventListener('click', toggleCart);
+            closeCart.addEventListener('click', toggleCart);
+            overlay.addEventListener('click', toggleCart);
+            
+            // Close cart with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && cartSidebar.classList.contains('active')) {
+                    toggleCart();
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close cart if open
+                        if (cartSidebar.classList.contains('active')) {
+                            toggleCart();
+                        }
+                    }
+                });
+            });
+        }
+
+        // Render category tabs
+        function renderCategoryTabs() {
+            categoryTabs.innerHTML = '';
+            menuData.categories.forEach(category => {
+                const button = document.createElement('button');
+                button.className = `category-tab ${category === activeCategory ? 'active' : ''}`;
+                button.textContent = category;
+                button.addEventListener('click', () => {
+                    activeCategory = category;
+                    document.querySelectorAll('.category-tab').forEach(tab => tab.classList.remove('active'));
+                    button.classList.add('active');
+                    renderMenuItems();
+                });
+                categoryTabs.appendChild(button);
+            });
+        }
+
+        // Render menu items
+        function renderMenuItems() {
+            menuGrid.innerHTML = '';
+            const filteredItems = activeCategory === 'All' 
+                ? menuData.items 
+                : menuData.items.filter(item => item.category === activeCategory);
+            
+            filteredItems.forEach(item => {
+                const cartItem = cart.find(ci => ci.id === item.id);
+                const quantity = cartItem ? cartItem.quantity : 0;
+                
+                const menuItem = document.createElement('div');
+                menuItem.className = 'menu-item';
+                menuItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-name">${item.name}</h3>
+                            <div class="menu-item-price">₹${item.price}</div>
+                        </div>
+                        <p class="menu-item-desc">${item.description}</p>
+                        <div class="menu-item-footer">
+                            <div class="quantity-control">
+                                <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                                <span class="quantity-display" id="quantity-${item.id}">${quantity}</span>
+                                <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                            </div>
+                            <button class="add-to-cart" data-id="${item.id}">
+                                <i class="fas fa-shopping-cart"></i>
+                                ${quantity > 0 ? 'Update Cart' : 'Add to Cart'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                menuGrid.appendChild(menuItem);
+            });
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.dataset.id);
+                    updateQuantity(id, -1);
+                });
+            });
+            
+            document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.dataset.id);
+                    updateQuantity(id, 1);
+                });
+            });
+            
+            // Add event listeners to add to cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.dataset.id);
+                    const currentQuantity = parseInt(document.getElementById(`quantity-${id}`).textContent);
+                    
+                    if (currentQuantity === 0) {
+                        updateQuantity(id, 1);
+                    } else {
+                        showNotification('Cart updated successfully!');
+                    }
+                });
+            });
+        }
+
+        // Update item quantity
+        function updateQuantity(id, change) {
+            const item = menuData.items.find(item => item.id === id);
+            const cartIndex = cart.findIndex(item => item.id === id);
+            const quantityElement = document.getElementById(`quantity-${id}`);
+            let newQuantity = parseInt(quantityElement.textContent) + change;
+            
+            if (newQuantity < 0) newQuantity = 0;
+            if (newQuantity > 10) {
+                showNotification('Maximum 10 items per dish');
+                newQuantity = 10;
+            }
+            
+            quantityElement.textContent = newQuantity;
+            
+            // Update cart array
+            if (cartIndex > -1) {
+                if (newQuantity === 0) {
+                    cart.splice(cartIndex, 1);
+                } else {
+                    cart[cartIndex].quantity = newQuantity;
+                }
+            } else if (newQuantity > 0) {
+                cart.push({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: newQuantity
+                });
+            }
+            
+            // Update button text
+            const addButton = document.querySelector(`.add-to-cart[data-id="${id}"]`);
+            if (addButton) {
+                addButton.innerHTML = `<i class="fas fa-shopping-cart"></i> ${newQuantity > 0 ? 'Update Cart' : 'Add to Cart'}`;
+            }
+            
+            // Save to localStorage and update UI
+            saveCart();
+            updateCartUI();
+            
+            // Show notification for adding items
+            if (change > 0 && newQuantity === 1) {
+                showNotification(`${item.name} added to cart!`);
+            }
+        }
+
+        // Toggle cart sidebar
+        function toggleCart() {
+            cartSidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = cartSidebar.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // Update cart UI
+        function updateCartUI() {
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update cart items
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div style="text-align: center; padding: 50px 20px; color: #888;">
+                        <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;"></i>
+                        <h4 style="margin-bottom: 10px;">Your cart is empty</h4>
+                        <p>Add some delicious items from our menu!</p>
+                    </div>
+                `;
+                cartTotal.textContent = '₹0';
+                checkoutBtn.href = '#';
+                checkoutBtn.onclick = (e) => {
+                    e.preventDefault();
+                    showNotification('Add items to your cart before placing an order');
+                };
+                return;
+            }
+            
+            // Render cart items
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">₹${item.price} × ${item.quantity}</div>
+                    </div>
+                    <div class="cart-item-controls">
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                            <span class="quantity-display">${item.quantity}</span>
+                            <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                        </div>
+                        <button class="remove-item" data-id="${item.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+            
+            // Add event listeners to cart quantity buttons
+            cartItems.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.dataset.id);
+                    updateQuantity(id, -1);
+                });
+            });
+            
+            cartItems.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.dataset.id);
+                    updateQuantity(id, 1);
+                });
+            });
+            
+            // Add event listeners to remove buttons
+            cartItems.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.closest('.remove-item').dataset.id);
+                    const item = cart.find(item => item.id === id);
+                    if (item) {
+                        cart = cart.filter(cartItem => cartItem.id !== id);
+                        saveCart();
+                        updateCartUI();
+                        renderMenuItems();
+                        showNotification(`${item.name} removed from cart`);
+                    }
+                });
+            });
+            
+            // Update total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `₹${total}`;
+            
+            // Update WhatsApp link
+            const phoneNumber = '+917780870376';
+            const orderSummary = generateOrderSummary();
+            const encodedMessage = encodeURIComponent(orderSummary);
+            checkoutBtn.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            checkoutBtn.onclick = null;
+        }
+
+        // Generate order summary for WhatsApp
+        function generateOrderSummary() {
+            const restaurantName = 'Eternal Uchiha Japanese Restaurant';
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            let summary = `*NEW ORDER - ${restaurantName}*\n\n`;
+            summary += `*Order Details:*\n`;
+            
+            cart.forEach((item, index) => {
+                summary += `${index + 1}. ${item.name} - ${item.quantity} × ₹${item.price} = ₹${item.quantity * item.price}\n`;
+            });
+            
+            summary += `\n*Total: ₹${total}*\n\n`;
+            summary += `*Customer Information:*\n`;
+            summary += `Name: _________\n`;
+            summary += `Phone: _________\n`;
+            summary += `Delivery Address: _________\n`;
+            summary += `Preferred Delivery Time: _________\n\n`;
+            summary += `*Payment Method:* Cash on Delivery\n\n`;
+            summary += `Thank you!`;
+            
+            return summary;
+        }
+
+        // Show notification
+        function showNotification(message) {
+            notificationText.textContent = message;
+            notification.classList.add('active');
+            
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, 3000);
+        }
+
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('eternalUchihaCart', JSON.stringify(cart));
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

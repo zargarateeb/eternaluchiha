@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EternalUchiha | Business-Focused Web Developer</title>
+    <meta name="description" content="EternalUchiha - Frontend Web Developer specializing in business websites for gyms, schools, and restaurants.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-fire"></i>
+                Eternal<span>Uchiha</span>
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="active">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Hello, I'm <span class="gradient-text">EternalUchiha</span></h1>
+                <h2>Business Web Developer</h2>
+                <p id="typewriter-text">I create practical, business-focused websites that solve real problems for local businesses. Specializing in lead generation, information architecture, and mobile-first design.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects Delivered</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support</div>
+                    </div>
+                </div>
+                
+                <div class="hero-btns">
+                    <a href="projects.html" class="btn btn-primary">
+                        <i class="fas fa-eye"></i> View My Work
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary">
+                        <i class="fas fa-calendar-alt"></i> Schedule a Call
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-image">
+                    <div class="code-display">
+                        <div class="code-header">
+                            <div class="code-dot red-dot"></div>
+                            <div class="code-dot yellow-dot"></div>
+                            <div class="code-dot green-dot"></div>
+                            <span>business_logic.js</span>
+                        </div>
+                        <div class="code-content">
+                            <div class="code-line"><span class="code-comment">// Business-Focused Web Development</span></div>
+                            <div class="code-line"><span class="code-keyword">class</span> <span class="code-function">EternalUchiha</span> {</div>
+                            <div class="code-line">&nbsp;&nbsp;<span class="code-function">constructor</span>() {</div>
+                            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">this</span>.focus = <span class="code-string">"Business Results"</span>;</div>
+                            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">this</span>.specialties = [<span class="code-string">"Lead Generation"</span>, <span class="code-string">"Mobile-First"</span>, <span class="code-string">"Fast Loading"</span>];</div>
+                            <div class="code-line">&nbsp;&nbsp;}</div>
+                            <div class="code-line">&nbsp;&nbsp;<span class="code-function">createWebsite</span>(businessType) {</div>
+                            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">`Optimized ${businessType} website that converts visitors to customers`</span>;</div>
+                            <div class="code-line">&nbsp;&nbsp;}</div>
+                            <div class="code-line">}</div>
+                            <div class="code-line"><span class="code-keyword">const</span> developer = <span class="code-keyword">new</span> <span class="code-function">EternalUchiha</span>();</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="featured-projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p class="section-subtitle">A glimpse of my recent work</p>
+            </div>
+            
+            <div class="projects-preview">
+                <div class="project-preview">
+                    <div class="preview-img">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="preview-content">
+                        <h3>Gym Website</h3>
+                        <p>Lead generation website for local gym with WhatsApp integration</p>
+                        <a href="projects/gym.html" class="btn-small">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="project-preview">
+                    <div class="preview-img">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="preview-content">
+                        <h3>School Website</h3>
+                        <p>Information portal for coaching institute with student portal</p>
+                        <a href="projects/school-website/index.html" class="btn-small">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="project-preview">
+                    <div class="preview-img">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="preview-content">
+                        <h3>Restaurant Website</h3>
+                        <p>Online food ordering system with WhatsApp checkout</p>
+                        <a href="projects/restaurant.html" class="btn-small">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="projects.html" class="btn btn-primary">
+                    <i class="fas fa-folder-open"></i> View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Services</h2>
+                <p class="section-subtitle">What I can do for your business</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Business Websites</h3>
+                    <p>Custom websites designed specifically for local businesses to generate leads and increase sales.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile-First Design</h3>
+                    <p>Responsive designs that work perfectly on all devices, with mobile optimization as priority.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Lead Generation</h3>
+                    <p>Conversion-focused designs with clear calls-to-action and contact form optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Grow Your Business Online?</h2>
+                <p>Let's discuss how I can help you get more customers and increase your online presence.</p>
+                <div class="cta-btns">
+                    <a href="contact.html" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                    <a href="projects.html" class="btn btn-secondary">
+                        <i class="fas fa-eye"></i> See My Work
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Eternal<span>Uchiha</span></div>
+                <p class="footer-tagline">Building digital solutions for real businesses</p>
+                
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://github.com/eternaluchiha" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/eternaluchiha" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://twitter.com/eternaluchiha" target="_blank" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 EternalUchiha. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

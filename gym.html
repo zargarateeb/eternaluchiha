@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternal Uchiha Gym - Transform Your Body Today</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #800020;
+            --primary-dark: #5c0017;
+            --primary-light: #a6002a;
+            --dark: #0a0a0a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --gradient: linear-gradient(135deg, #800020 0%, #5c0017 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+            background: #000;
+        }
+
+        /* Floating Particles Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(50px, -50px) rotate(120deg); }
+            66% { transform: translate(-50px, 50px) rotate(240deg); }
+        }
+
+        /* Animated Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            padding: 16px 20px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+            border-bottom: 1px solid rgba(128, 0, 32, 0.3);
+        }
+
+        nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(128, 0, 32, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(128, 0, 32, 0.5);
+        }
+
+        /* Hero Section with 3D Effect */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 100px 20px 140px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/projects/body.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.hero-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(128, 0, 32, 0.8),  /* Primary color overlay */
+        rgba(92, 0, 23, 0.9)    /* Darker primary color */
+    );
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1200px;
+}
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.3);
+            animation: slideUp 0.8s ease;
+        }
+
+        .hero h1 span {
+            display: block;
+            background: linear-gradient(to right, #fff, #ffcccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            animation: slideUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+            animation: slideUp 0.8s ease 0.4s backwards;
+        }
+
+        .cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            color: var(--primary);
+            padding: 18px 48px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 8px 30px rgba(255,255,255,0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(128, 0, 32, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-primary:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: transparent;
+            color: white;
+            padding: 18px 48px;
+            border: 2px solid white;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+            animation: slideUp 0.8s ease 0.6s backwards;
+        }
+
+        .hero-stat {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Features Section with Cards */
+        .features {
+            position: relative;
+            padding: 100px 20px;
+            background: #000;
+            z-index: 10;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .section-description {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(128, 0, 32, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(128, 0, 32, 0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            position: relative;
+            padding: 100px 20px;
+            background: #0a0a0a;
+            z-index: 10;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 40px;
+            border-radius: 24px;
+            border: 2px solid rgba(128, 0, 32, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .pricing-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .pricing-card.featured {
+            background: var(--gradient);
+            border-color: var(--primary-light);
+            transform: scale(1);
+            box-shadow: 0 20px 60px rgba(128, 0, 32, 0.4);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .pricing-card p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 24px;
+        }
+
+        .pricing-card.featured p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .price {
+            margin-bottom: 24px;
+        }
+
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .price-period {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        .pricing-card.featured .price-period {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .savings {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #4ade80;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: #4ade80;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .pricing-cta {
+            display: block;
+            text-align: center;
+            background: white;
+            color: var(--primary);
+            padding: 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.featured .pricing-cta {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .pricing-cta:active {
+            transform: scale(0.95);
+        }
+
+        /* Testimonials Slider */
+        .testimonials {
+            padding: 100px 20px;
+            background: #000;
+            position: relative;
+            z-index: 10;
+        }
+
+        .testimonials-slider {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 50px;
+            border-radius: 24px;
+            border: 1px solid rgba(128, 0, 32, 0.3);
+            text-align: center;
+            display: none;
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .testimonial-quote {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: white;
+            margin-bottom: 32px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .author-info h4 {
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(128, 0, 32, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary);
+            width: 32px;
+            border-radius: 6px;
+        }
+
+/* Gallery Section */
+.gallery {
+    padding: 100px 20px;
+    background: #0a0a0a;
+    position: relative;
+    z-index: 10;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    aspect-ratio: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background: var(--gradient); /* Fallback background */
+}
+
+/* New: Image styling */
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1; /* Ensure overlay is above image */
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+.gallery-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    z-index: 2; /* Ensure label is above overlay and image */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover .gallery-label {
+    transform: translateY(0);
+    opacity: 1;
+}
+        /* Location Section */
+        .location {
+            padding: 100px 20px;
+            background: #000;
+            position: relative;
+            z-index: 10;
+        }
+
+        .location-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .location-info-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(128, 0, 32, 0.3);
+        }
+
+        .location-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(128, 0, 32, 0.2);
+        }
+
+        .location-item:last-child {
+            border-bottom: none;
+        }
+
+        .location-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .location-details h4 {
+            color: white;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .location-details p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .hours-grid {
+            display: grid;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .hour-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            background: rgba(128, 0, 32, 0.1);
+            border-radius: 8px;
+        }
+
+        .hour-item span:first-child {
+            color: white;
+        }
+
+        .hour-item span:last-child {
+            color: var(--gray);
+            font-weight: 600;
+        }
+
+        .hour-item.closed span:last-child {
+            color: var(--primary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 20px;
+            background: var(--gradient);
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .cta-button-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            color: var(--primary);
+            padding: 20px 60px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button-large:active {
+            transform: scale(0.95);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 120px;
+            position: relative;
+            z-index: 10;
+            border-top: 1px solid rgba(128, 0, 32, 0.3);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--gray);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(128, 0, 32, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(128, 0, 32, 0.2);
+            color: var(--gray);
+        }
+
+        /* Fixed Contact Bar */
+        .contact-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 -4px 30px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: 2px solid var(--primary);
+        }
+
+        .contact-bar a {
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .contact-bar .whatsapp {
+            background: #25d366;
+            color: white;
+        }
+
+        .contact-bar .phone {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .contact-bar a:active {
+            transform: scale(0.95);
+        }
+
+        /* Tablet */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .location-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: row;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .pricing-card.featured {
+                transform: scale(1.05);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-bar {
+                display: none;
+            }
+
+            .hero-cta-group {
+                flex-direction: row;
+            }
+
+            .cta-secondary:hover {
+                background: white;
+                color: var(--primary);
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gradient);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav id="mainNav">
+        <div class="nav-container">
+            <div class="logo">💪 EternalUchiha</div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#location">Location</a>
+            </div>
+            <a href="https://wa.me/917780870376?text=Hi!%20I'm%20interested%20in%20joining%20EternalUchiha%20Gym.%20Please%20share%20membership%20details." class="nav-cta">Join Now</a>
+        </div>
+    </nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-bg" style="background-image: url('/projects/body.jpg');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>ETERNAL UCHIHA GYM</h1>
+        <h2>Transform Yourself Today.</h2>
+        <p>India's Most Advanced 24×7 Fitness Center in Kashmir</p>
+        <div class="hero-cta-group">
+            <a href="https://wa.me/917780870376?text=Hi!%20I'm%20interested%20in%20joining%20EternalUchiha%20Gym.%20Please%20share%20membership%20details." class="cta-primary">
+                <span>💬</span> Start Free Trial
+            </a>
+            <a href="tel:+917780870376" class="cta-secondary">
+                <span>📞</span> Call Now
+            </a>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="hero-stat-number">500+</span>
+                <span class="hero-stat-label">Active Members</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-number">24×7</span>
+                <span class="hero-stat-label">Always Open</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-number">4.9★</span>
+                <span class="hero-stat-label">Google Rating</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <div class="section-subtitle">Why Choose Us</div>
+            <h2 class="section-title">World-Class Facilities</h2>
+            <p class="section-description">Experience the perfect blend of cutting-edge equipment, expert guidance, and premium amenities</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏋️</div>
+                <h3>Latest Equipment</h3>
+                <p>State-of-the-art machines from international brands. Cardio zones, free weights, functional training areas, and more.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👨‍🏫</div>
+                <h3>Expert Trainers</h3>
+                <p>Certified fitness professionals with years of experience. Personalized workout plans and nutrition guidance included.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🕐</div>
+                <h3>24×7 Access</h3>
+                <p>Work out on your schedule. Open 6 days a week, round the clock. Perfect for professionals and night shift workers.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛁</div>
+                <h3>Premium Amenities</h3>
+                <p>Spacious locker rooms, hot showers, steam room, and dedicated areas for stretching and recovery.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎵</div>
+                <h3>Group Classes</h3>
+                <p>Yoga, Zumba, CrossFit, HIIT, and more. Join our energetic community and make fitness fun.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🍎</div>
+                <h3>Nutrition Support</h3>
+                <p>Custom diet plans, supplement guidance, and body composition analysis to track your progress.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="section-header">
+            <div class="section-subtitle">Flexible Plans</div>
+            <h2 class="section-title">Choose Your Plan</h2>
+            <p class="section-description">No hidden charges. Cancel anytime. Start with a free trial.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-badge">1 Month</div>
+                <h3>Starter</h3>
+                <p>Perfect for trying out</p>
+                <div class="price">
+                    <span class="price-amount">₹1,000</span>
+                    <div class="price-period">/month</div>
+                </div>
+                <ul class="pricing-features">
+                    <li>Full gym access</li>
+                    <li>Locker facility</li>
+                    <li>Basic workout plan</li>
+                    <li>Group classes</li>
+                </ul>
+                <a href="https://wa.me/917780870376?text=I want to join the 1 Month plan at ₹1000" class="pricing-cta">Get Started</a>
+            </div>
+
+            <div class="pricing-card">
+                <div class="pricing-badge">3 Months</div>
+                <h3>Regular</h3>
+                <p>Most popular choice</p>
+                <div class="price">
+                    <span class="price-amount">₹2,550</span>
+                    <div class="price-period">₹850/month</div>
+                </div>
+                <div class="savings">💰 Save ₹450</div>
+                <ul class="pricing-features">
+                    <li>Everything in Starter</li>
+                    <li>Diet consultation</li>
+                    <li>Progress tracking</li>
+                    <li>Priority support</li>
+                </ul>
+                <a href="https://wa.me/917780870376?text=I want to join the 3 Months plan at ₹2550" class="pricing-cta">Get Started</a>
+            </div>
+
+            <div class="pricing-card">
+                <div class="pricing-badge">6 Months</div>
+                <h3>Committed</h3>
+                <p>Best value for money</p>
+                <div class="price">
+                    <span class="price-amount">₹4,500</span>
+                    <div class="price-period">₹750/month</div>
+                </div>
+                <div class="savings">💰 Save ₹1,500</div>
+                <ul class="pricing-features">
+                    <li>Everything in Regular</li>
+                    <li>Personal trainer sessions</li>
+                    <li>Body composition test</li>
+                    <li>Guest pass (2)</li>
+                </ul>
+                <a href="https://wa.me/917780870376?text=I want to join the 6 Months plan at ₹4500" class="pricing-cta">Get Started</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="pricing-badge">⭐ BEST VALUE</div>
+                <h3>Transformation</h3>
+                <p>Complete fitness journey</p>
+                <div class="price">
+                    <span class="price-amount">₹7,200</span>
+                    <div class="price-period">₹600/month</div>
+                </div>
+                <div class="savings">💰 Save ₹4,800</div>
+                <ul class="pricing-features">
+                    <li>Everything in Committed</li>
+                    <li>8 PT sessions/month</li>
+                    <li>Custom meal plans</li>
+                    <li>Free supplements guide</li>
+                    <li>Guest pass (5)</li>
+                </ul>
+                <a href="https://wa.me/917780870376?text=I want to join the 1 Year plan at ₹7200" class="pricing-cta">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header">
+            <div class="section-subtitle">Success Stories</div>
+            <h2 class="section-title">What Our Members Say</h2>
+            <p class="section-description">Real transformations. Real results.</p>
+        </div>
+        <div class="testimonials-slider">
+            <div class="testimonial active">
+                <p class="testimonial-quote">"Amazing Gym. Motivating Environment and Friendly Trainer. Love to train thete"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">PS</div>
+                    <div class="author-info">
+                        <h4>Ahsan Wani</h4>
+                        <p>Software Engineer • Lost 15kg</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"Best decision ever! Pehle 5 gyms try kiye but yaha ka environment alag hi hai। Trainers ne mera complete transformation plan banaya. Ab main stronger aur more confident feel karta hoon।"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">RP</div>
+                    <div class="author-info">
+                        <h4>Mohammad Ali</h4>
+                        <p>Student • Gained 8kg Muscle</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote">"Clean facility aur personal attention ne meri fitness journey ko easy bana diya। Highly recommend!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SD</div>
+                    <div class="author-info">
+                        <h4>Sneha Deshmukh</h4>
+                        <p>Teacher • Improved Flexibility</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+        </div>
+    </section>
+
+<!-- Gallery Section -->
+<section class="gallery">
+    <div class="section-header">
+        <div class="section-subtitle">Our Facility</div>
+        <h2 class="section-title">Take A Virtual Tour</h2>
+        <p class="section-description">See what makes us different</p>
+    </div>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="/projects/cardio.png" alt="Cardio Zone" class="gallery-image">
+            <div class="gallery-label">Cardio Zone</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/projects/free.png" alt="Free Weights Area" class="gallery-image">
+            <div class="gallery-label">Free Weights Area</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/projects/func.png" alt="Functional Training" class="gallery-image">
+            <div class="gallery-label">Functional Training</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/projects/group.png" alt="Group Class Studio" class="gallery-image">
+            <div class="gallery-label">Group Class Studio</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/projects/spa.png" alt="Steam & Spa" class="gallery-image">
+            <div class="gallery-label">Steam & Spa</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/projects/strech.png" alt="Stretching Area" class="gallery-image">
+            <div class="gallery-label">Stretching Area</div>
+        </div>
+    </div>
+</section>
+    <!-- Location Section -->
+    <section class="location" id="location">
+        <div class="section-header">
+            <div class="section-subtitle">Find Us</div>
+            <h2 class="section-title">Visit Us Today</h2>
+            <p class="section-description">Located in the heart of Pune with easy access</p>
+        </div>
+        <div class="location-container">
+            <div class="location-info-card">
+                <div class="location-item">
+                    <div class="location-icon">📍</div>
+                    <div class="location-details">
+                        <h4>Address</h4>
+                        <p>Building A, Street 124, Srinagar, J&K, India</p>
+                    </div>
+                </div>
+                <div class="location-item">
+                    <div class="location-icon">🚗</div>
+                    <div class="location-details">
+                        <h4>How to Reach</h4>
+                        <p>5 min walk from Tourist Centre<br>Free parking available for members</p>
+                    </div>
+                </div>
+                <div class="location-item">
+                    <div class="location-icon">📞</div>
+                    <div class="location-details">
+                        <h4>Contact</h4>
+                        <p>Phone: +91 7780870376<br>Email: contact@eternaluchihagym.in</p>
+                    </div>
+                </div>
+            </div>
+            <div class="location-info-card">
+                <div class="location-item">
+                    <div class="location-icon">🕐</div>
+                    <div class="location-details">
+                        <h4>Opening Hours</h4>
+                        <div class="hours-grid">
+                            <div class="hour-item">
+                                <span>Monday - Saturday</span>
+                                <span>24 Hours</span>
+                            </div>
+                            <div class="hour-item closed">
+                                <span>Sunday</span>
+                                <span>CLOSED</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Transform?</h2>
+        <p>Join 500+ members who are already on their fitness journey. Start your free trial today!</p>
+        <div class="cta-buttons">
+            <a href="https://wa.me/917780870376?text=Hi!%20I%20want%20to%20start%20my%20free%20trial%20at%20Eternal%20Uchiha%20Gym" class="cta-button-large">
+                💬 WhatsApp Us Now
+            </a>
+            <a href="tel:+917780870376" class="cta-button-large">
+                📞 Call for Free Trial
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Eternal Uchiha Gym</h3>
+                <p>India's premier 24×7 fitness center with world-class facilities and expert trainers.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#features">Features</a>
+                <a href="#pricing">Membership Plans</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#location">Location</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📍 Building A, Street 124, Srinagar, J&K, India</p>
+                <p>📞 +91 77808 70376</p>
+                <p>📧 contact@eternaluchihagym.in</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 EternalUchiha Gym. All rights reserved. | Designed for Maximum Conversions</p>
+        </div>
+    </footer>
+
+    <!-- Fixed Contact Bar (Mobile) -->
+    <div class="contact-bar">
+        <a href="https://wa.me/917780870376?text=Hi!%20I'm%20interested%20in%20joining%20EternalUchiha%20Gym.%20Please%20share%20membership%20details." class="whatsapp">
+            💬 WhatsApp
+        </a>
+        <a href="tel:+917780870376" class="phone">
+            📞 Call Now
+        </a>
+    </div>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Hide/show navigation on scroll
+        let lastScroll = 0;
+        const nav = document.getElementById('mainNav');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                nav.classList.remove('hidden');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Testimonials slider
+        let currentSlide = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            testimonials.forEach(t => t.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            
+            testimonials[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % testimonials.length;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance slides
+        setInterval(nextSlide, 5000);
+
+        // Manual dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.feature-card, .pricing-card, .gallery-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            observer.observe(el);
+        });
+
+        // Track CTA clicks (integrate with your analytics)
+        document.querySelectorAll('a[href^="tel:"], a[href^="https://wa.me"]').forEach(link => {
+            link.addEventListener('click', function() {
+                console.log('CTA clicked:', this.textContent.trim());
+                // Add your analytics tracking here
+                // Example: gtag('event', 'click', { 'event_category': 'CTA', 'event_label': this.textContent });
+            });
+        });
+
+        // Parallax effect on hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-content');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - (scrolled / window.innerHeight);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | ShredFX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://ik.imagekit.io/k6lrn9lgb/New%20Project%205%20_BD7D037_.png">
+    <style>
+        /* ===== REUSE COMMON CSS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --dark: #0a0a0a;
+            --dark-light: #1a1a1a;
+            --text: #ffffff;
+            --text-light: #b0b0b0;
+            --card-bg: #1a1a1a;
+            --border: #333333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        .fx {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* ===== PORTFOLIO HEADER ===== */
+        .portfolio-header {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(10, 10, 10, 1) 100%);
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .page-subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* ===== FILTER TABS ===== */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--text-light);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--dark);
+        }
+
+        /* ===== PORTFOLIO GRID ===== */
+        .portfolio-grid-section {
+            padding: 60px 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .portfolio-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.1);
+        }
+
+        .portfolio-video {
+            position: relative;
+            aspect-ratio: 9/16;
+            overflow: hidden;
+            background: #111;
+        }
+
+        .portfolio-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover .video-overlay {
+            opacity: 1;
+        }
+
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .portfolio-info {
+            padding: 25px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-info p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* ===== EMPTY STATE ===== */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--dark-light);
+            border-radius: 15px;
+            border: 2px dashed var(--border);
+            margin: 30px 0;
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* ===== PORTFOLIO CTA ===== */
+        .portfolio-cta {
+            text-align: center;
+            padding: 60px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(10, 10, 10, 1) 100%);
+            border-radius: 15px;
+            margin-top: 50px;
+        }
+
+        .portfolio-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-cta p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #080808;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-section p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--dark-light);
+            color: var(--text);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .filter-tabs {
+                gap: 10px;
+            }
+            
+            .filter-btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-cta {
+                padding: 40px 20px;
+            }
+            
+            .portfolio-cta h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/917780870376?text=Hi%20ShredFX!%20I%20want%20to%20discuss%20a%20video%20editing%20project" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://ik.imagekit.io/k6lrn9lgb/New%20Project%205%20_BD7D037_.png" alt="ShredFX Logo" class="logo-img">
+                <span class="logo-text">Shred<span class="fx">FX</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="portfolio.html" class="nav-link active"><i class="fas fa-play-circle"></i> Portfolio</a>
+                <a href="services.html" class="nav-link"><i class="fas fa-tags"></i> Services</a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-phone-alt"></i> Contact</a>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Portfolio Header -->
+    <section class="portfolio-header">
+        <div class="container">
+            <h1 class="page-title">My <span class="highlight">Portfolio</span></h1>
+            <p class="page-subtitle">Showcasing my best video edits across different styles and platforms</p>
+            
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">All Videos</button>
+                <button class="filter-btn" data-filter="reels">Reels/Shorts</button>
+                <button class="filter-btn" data-filter="youtube">YouTube</button>
+                <button class="filter-btn" data-filter="hardcore">Hardcore Edits</button>
+                <button class="filter-btn" data-filter="aesthetic">Aesthetic</button>
+                <button class="filter-btn" data-filter="gaming">Gaming</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio-grid-section">
+        <div class="container">
+            <div class="portfolio-grid">
+                
+                <!-- Video 1 -->
+                <div class="portfolio-item" data-category="reels hardcore gaming">
+                    <div class="portfolio-video">
+                        <iframe src="https://www.youtube.com/embed/-QdJbB6eTaI"
+                                width="100%" 
+                                height="100%"
+                                frameborder="0" 
+                                scrolling="no"
+                                allowfullscreen>
+                        </iframe>
+                        <div class="video-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Fast-Paced Hardcore Edit</h3>
+                        <p>Dynamic beats with intense transitions, special effects, and high-energy music sync.</p>
+                        <div class="tags">
+                            <span class="tag">Hardcore</span>
+                            <span class="tag">Gaming</span>
+                            <span class="tag">Reels</span>
+                            <span class="tag">Fast-paced</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="portfolio-item" data-category="youtube aesthetic">
+                    <div class="portfolio-video">
+                        <iframe src="https://www.youtube.com/embed/GXPDDCnIx1M"
+                                width="100%"
+                                height="100%"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
+                        <div class="video-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Business Ad Edit</h3>
+                        <p>Business Advertisement Edit with smooth transitions, cinematic color grading, and engaging text animations.</p>
+                        <div class="tags">
+                            <span class="tag">Educational</span>
+                            <span class="tag">Aesthetic</span>
+                            <span class="tag">YouTube Shorts</span>
+                            <span class="tag">Cinematic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="portfolio-item" data-category="youtube gaming">
+                    <div class="portfolio-video">
+                        <iframe src="https://www.youtube.com/embed/UJL89ZG16Ew"
+                                width="100%"
+                                height="100%"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
+                        <div class="video-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Facts / Historical Shorts Channel Edits</h3>
+                        <p>Clean Motion Graphics and smooth transitions for Facts Shorts Channel or History/Geographical Stories Channel</p>
+                        <div class="tags">
+                            <span class="tag">Gaming</span>
+                            <span class="tag">Montage</span>
+                            <span class="tag">YouTube</span>
+                            <span class="tag">VFX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 4 - Coming Soon -->
+                <div class="portfolio-item" data-category="reels aesthetic">
+                    <div class="portfolio-video">
+                        <div class="empty-state" style="height: 100%; display: flex; align-items: center; justify-content: center; background: #111;">
+                            <div style="text-align: center; padding: 20px;">
+                                <div class="empty-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <h3 style="color: var(--text); margin-bottom: 10px;">Travel Reel</h3>
+                                <p style="color: var(--text-light);">Cinematic travel edit coming soon</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Travel Cinematic Reel</h3>
+                        <p>Smooth transitions, slow-motion shots, and cinematic color grading for travel content.</p>
+                        <div class="tags">
+                            <span class="tag">Travel</span>
+                            <span class="tag">Cinematic</span>
+                            <span class="tag">Aesthetic</span>
+                            <span class="tag">Reels</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="portfolio-item" data-category="youtube aesthetic">
+                    <div class="portfolio-video">
+                        <iframe src="https://www.youtube.com/embed/zqdxZBeQ0d8"
+                                width="100%"
+                                height="100%"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
+                        <div class="video-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Business Promotion Reel</h3>
+                        <p>Professional edit for brand marketing with clean transitions and corporate aesthetics.</p>
+                        <div class="tags">
+                            <span class="tag">Educational</span>
+                            <span class="tag">Aesthetic</span>
+                            <span class="tag">YouTube Shorts</span>
+                            <span class="tag">Cinematic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 6 - Coming Soon -->
+                <div class="portfolio-item" data-category="youtube">
+                    <div class="portfolio-video">
+                        <div class="empty-state" style="height: 100%; display: flex; align-items: center; justify-content: center; background: #111;">
+                            <div style="text-align: center; padding: 20px;">
+                                <div class="empty-icon">
+                                    <i class="fas fa-film"></i>
+                                </div>
+                                <h3 style="color: var(--text); margin-bottom: 10px;">Vlog Edit</h3>
+                                <p style="color: var(--text-light);">YouTube vlog edit coming soon</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>YouTube Vlog Edit</h3>
+                        <p>Full-length vlog editing with B-roll, sound design, color grading, and storytelling.</p>
+                        <div class="tags">
+                            <span class="tag">Vlog</span>
+                            <span class="tag">YouTube</span>
+                            <span class="tag">Storytelling</span>
+                            <span class="tag">B-roll</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Empty State for More Videos -->
+            <div class="empty-state">
+                <div class="empty-icon">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+                <h2>More Edits Coming Soon!</h2>
+                <p style="max-width: 600px; margin: 0 auto 30px;">I'm constantly creating new content. More amazing edits will be added regularly. Want to see your project here?</p>
+                <a href="contact.html" class="btn btn-primary">Start Your Project</a>
+            </div>
+
+            <!-- Portfolio CTA -->
+            <div class="portfolio-cta">
+                <h2>Want Edits Like These?</h2>
+                <p>Let's create something amazing for your brand or channel. I'll help you stand out with professional video editing.</p>
+                <a href="contact.html" class="btn btn-primary">Get Your Custom Edit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="index.html" class="footer-logo">
+                        <img src="https://ik.imagekit.io/k6lrn9lgb/New%20Project%205%20_BD7D037_.png" alt="ShredFX Logo">
+                        <span>Shred<span class="fx">FX</span></span>
+                    </a>
+                    <p>Professional video editing services for creators and businesses.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/shredfx_?igsh=cXZnMzdjcGMxd2ti" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/917780870376" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:edits.shredfx@gmail.com"><i class="far fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html#reels">Reels Editing</a></li>
+                        <li><a href="services.html#youtube">YouTube Videos</a></li>
+                        <li><a href="services.html#thumbnails">Thumbnail Design</a></li>
+                        <li><a href="services.html#packages">Package Deals</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> +91 7780870376</li>
+                        <li><i class="far fa-envelope"></i> edits.shredfx@gmail.com</li>
+                        <li><i class="fab fa-instagram"></i> @shredfx_</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShredFX. All rights reserved.</p>
+                <p>Made with ❤️ for creators</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'rgba(10, 10, 10, 0.98)';
+                navLinks.style.padding = '20px';
+                navLinks.style.gap = '20px';
+                navLinks.style.borderTop = '1px solid #333';
+            }
+        });
+
+        // Close menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'row';
+                navLinks.style.position = 'static';
+                navLinks.style.background = 'transparent';
+                navLinks.style.padding = '0';
+                navLinks.style.borderTop = 'none';
+            } else {
+                navLinks.style.display = 'none';
+            }
+        });
+
+        // Portfolio Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                // Filter portfolio items
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all') {
+                        item.style.display = 'block';
+                    } else {
+                        const categories = item.getAttribute('data-category').split(' ');
+                        if (categories.includes(filterValue)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Play button functionality
+        document.querySelectorAll('.play-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const videoContainer = button.closest('.portfolio-video');
+                const iframe = videoContainer.querySelector('iframe');
+                
+                // For YouTube videos
+                if (iframe.src.includes('youtube.com')) {
+                    const videoId = iframe.src.split('/embed/')[1];
+                    window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+                }
+                // For Instagram videos
+                else if (iframe.src.includes('instagram.com')) {
+                    const postId = iframe.src.split('/reel/')[1]?.split('/')[0];
+                    if (postId) {
+                        window.open(`https://www.instagram.com/reel/${postId}/`, '_blank');
+                    }
+                }
+            });
+        });
+
+        // Click on portfolio item to open video
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (!e.target.closest('.play-btn') && !e.target.closest('.btn')) {
+                    const iframe = item.querySelector('iframe');
+                    if (iframe && iframe.src) {
+                        if (iframe.src.includes('youtube.com')) {
+                            const videoId = iframe.src.split('/embed/')[1];
+                            window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+                        } else if (iframe.src.includes('instagram.com')) {
+                            const postId = iframe.src.split('/reel/')[1]?.split('/')[0];
+                            if (postId) {
+                                window.open(`https://www.instagram.com/reel/${postId}/`, '_blank');
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        // Highlight current page in nav
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.href === window.location.href || 
+                (window.location.pathname.includes('portfolio') && link.href.includes('portfolio.html'))) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // Add animation to portfolio items on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all portfolio items
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

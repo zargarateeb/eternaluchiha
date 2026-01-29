@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Pricing | ShredFX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://ik.imagekit.io/k6lrn9lgb/New%20Project%205%20_BD7D037_.png">
+    <style>
+        /* ===== REUSE HOME PAGE CSS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --dark: #0a0a0a;
+            --dark-light: #1a1a1a;
+            --text: #ffffff;
+            --text-light: #b0b0b0;
+            --card-bg: #1a1a1a;
+            --border: #333333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        .fx {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* ===== SERVICES HEADER ===== */
+        .services-header {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(10, 10, 10, 1) 100%);
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .page-subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* ===== PRICING TABLES ===== */
+        .pricing-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .service-category {
+            margin-bottom: 80px;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 40px 30px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--dark);
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .plan-name {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .price-duration {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-list li i {
+            color: var(--primary);
+        }
+
+        .pricing-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            background: var(--primary);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .pricing-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ===== PACKAGES SECTION ===== */
+        .packages-section {
+            background: var(--dark-light);
+            padding: 80px 0;
+        }
+
+        .package-card {
+            background: var(--dark);
+            border-radius: 15px;
+            padding: 50px 40px;
+            text-align: center;
+            border: 2px solid var(--primary);
+            margin-top: 30px;
+        }
+
+        .package-highlights {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .highlight-item {
+            text-align: center;
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* ===== PROCESS SECTION ===== */
+        .process-section {
+            padding: 80px 0;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 10px;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--dark);
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #080808;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-section p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--dark-light);
+            color: var(--text);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* ===== DISCOUNT BADGES ===== */
+        .discount-badge {
+            display: inline-block;
+            background: #ff4757;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .pricing-card.popular {
+                transform: none;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .price {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/917780870376?text=Hi%20ShredFX!%20I%20want%20to%20discuss%20your%20editing%20services" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://ik.imagekit.io/k6lrn9lgb/New%20Project%205%20_BD7D037_.png" alt="ShredFX Logo" class="logo-img">
+                <span class="logo-text">Shred<span class="fx">FX</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="portfolio.html" class="nav-link"><i class="fas fa-play-circle"></i> Portfolio</a>
+                <a href="services.html" class="nav-link active"><i class="fas fa-tags"></i> Services</a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-phone-alt"></i> Contact</a>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Services Header -->
+    <section class="services-header">
+        <div class="container">
+            <h1 class="page-title">Services & <span class="highlight">Pricing</span></h1>
+            <p class="page-subtitle">Professional video editing services tailored to your needs. Affordable rates with premium quality.</p>
+            <p class="page-subtitle"><strong>🎁 FIRST-TIME CLIENT OFFER: Get 30% OFF on your first order!</strong></p>
+        </div>
+    </section>
+
+    <!-- Thumbnail Design -->
+    <section class="pricing-section" id="thumbnails">
+        <div class="container">
+            <h2 class="section-title">Thumbnail <span class="highlight">Design</span></h2>
+            <p class="section-subtitle">Eye-catching thumbnails that increase CTR and drive views</p>
+            
+            <div class="service-category">
+                <h3 class="category-title">Single Thumbnail</h3>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="plan-name">Basic Thumbnail</h3>
+                            <div class="price">₹80<span class="discount-badge">NEW CLIENT 30% OFF</span></div>
+                            <p class="price-duration">per thumbnail</p>
+                        </div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Custom design from scratch</li>
+                            <li><i class="fas fa-check"></i> High resolution (1280×720)</li>
+                            <li><i class="fas fa-check"></i> Text overlay & effects</li>
+                            <li><i class="fas fa-check"></i> 1 revision included</li>
+                            <li><i class="fas fa-check"></i> 24-hour delivery</li>
+                            <li><i class="fas fa-check"></i> PNG format</li>
+                        </ul>
+                        <a href="https://wa.me/917780870376?text=Hi%20ShredFX!%20I%20want%20to%20order%20Basic%20Thumbnail%20(₹80)" 
+                           class="pricing-btn" target="_blank">
+                           Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reels/Shorts Editing -->
+    <section class="pricing-section" id="reels" style="background: var(--dark-light);">
+        <div class="container">
+            <h2 class="section-title">Reels/Shorts <span class="highlight">Editing</span></h2>
+            <p class="section-subtitle">Engaging short-form content for Instagram, YouTube Shorts & TikTok</p>
+            
+            <div class="service-category">
+                <h3 class="category-title">Choose Your Package</h3>
+                <div class="pricing-grid">
+                    <!-- Basic -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="plan-name">Basic Edit</h3>
+                            <div class="price">₹200<span class="discount-badge">SAVE ₹60</span></div>
+                            <p class="price-duration"><span class="original-price">₹260</span> for first-time clients</p>
+                        </div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Up to 1 minute video</li>
+                            <li><i class="fas fa-check"></i> Basic cuts & trimming</li>
+                            <li><i class="fas fa-check"></i> Text captions & subtitles</li>
+                            <li><i class="fas fa-check"></i> Music synchronization</li>
+                            <li><i class="fas fa-check"></i> Simple transitions</li>
+                            <li><i class="fas fa-check"></i> 48-hour delivery</li>
+                            <li><i class="fas fa-check"></i> 1 revision</li>
+                        </ul>
+                        <a href="https://wa.me/917780870376?text=Hi%20ShredFX!%20I%20want%20to%20order%20Basic%20Reels%20Edit%20(₹200)" 
+                           class="pricing-btn" target="_blank">
+                           Order Now
+                        </a>
+                    </div>
+
+                    <!-- Standard (Popular) -->
+                    <div class="pricing-card popular">
+                        <div class="popular-badge">MOST POPULAR</div>
+                        <div class="pricing-header">
+                            <h3 class="plan-name">Standard Edit</h3>
+                            <div class="price">₹400<span class="discount-badge">SAVE ₹120</span></div>
+                            <p class="price-duration"><span class="original-price">₹520</span> for first-time clients</p>
+                        </div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> <strong>Everything in Basic</strong></li>
+                            <li><i class="fas fa-check"></i> Up to 2 minutes video</li>
+                            <li><i class="fas fa-check"></i> Advanced transitions</li>
+                            <li><i class="fas fa-check"></i> Color correction & grading</li>
+                            <li><i class="fas fa-check"></i> Text animations</li>
+                            <li><i class="fas fa-check"></i> Sound effects</li>
+                            <li><i class="fas fa-check"></i> 36-hour delivery</li>
+                            <li><i class="fas fa-check"></i> 2 revisions</li>
+                        </ul>
+                        <a href="https://wa.me/917780870376?text=Hi%20ShredFX!%20I%20want%20to%20order%20Standard%20Reels%20Edit%20(₹400)" 
+                           class="pricing-btn" target="_blank">
+                           Order Now
+                        </a>
+                    </div>
+
+                    <!-- Premium -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="plan-name">Premium Edit</h3>
+                            <div class="price">₹800<span class="discount-badge">SAVE ₹240</span></div>
+                            <p class="price-duration"><span class="original-price">₹1040</span> for first-time clients</p>
+                        </div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> <strong>Everything in Standard</strong></li>
+                            <li><i class="fas fa-check"></i> Up to 3 minutes video</li>
+                            <li><i class="fas fa-check"></i> Custom motion graphics</li>
+                            <li><i class="fas fa-check"></i> Advanced VFX & effects</li>
+                            <li><i class="fas fa-check"></i> Voiceover synchronization</li>
+                            <li><i class="fas fa-check"></i> Brand logo animation</li>
+                            <li><i class="fas fa-check"></i> 24-hour delivery</li>
+                            <li><i class="fas fa-check"></i> Unlimited revisions</li>
+                        </ul>
+                        <a href="https://wa.me/917780870376?text=Hi%20ShredFX!%20I%20want%20to%20order%20Premium%20Reels%20Edit%20(₹800)" 
+                           class="pricing-btn" target="_blank">
+                           Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Videos -->
+    <section class="pricing-section" id="youtube">
+        <div class="container">
+            <h2 class="section-title">YouTube <span class="highlight">Videos</span></h2>
+            <p class="section-subtitle">Full-length video editing with professional quality</p>
+            
+            <div class="service-category">
+                <h3 class="category-title">Long-Form Content</h3>
+                <div class="pricing-grid">
+                    <!-- Basic YouTube -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="plan-name">Basic Edit</h3>
+                            <div class="price">₹800<span class="discount-badge">SAVE ₹240</span></div>
+                            <p class="price-duration"><span class="original-price">₹1040</span> for first-time clients</p>
+                        </div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Up to 10 minutes video</li>
+                            <li><i class="fas fa-check"></i> Cutting & sequencing</li>
+                            <li><i class="fas fa-check"></i> Basic color correction</li>
+                            <li><i class="fas fa-check"></i> Audio leveling</li>
+                            <li><i class="fas fa-check"></i> Simple text overlays</li>
+                            <li><i class="fas fa-check"></i> 3-day delivery</li>
+                            <li><i class="fas fa-check"></i> 1 revision</li>
+                        </ul>
+                        <a href="https://wa.me/917780870376?text=Hi%20ShredFX!%20I%20want%20to%20order%20Basic%20YouTube%20Edit%20(₹800)" 
+                           class="pricing-btn" target="_blank">
+                           Order Now
+                        </a>
+                    </div>
+
+                    <!-- Standard YouTube -->
+                    <div class="pricing-card popular">
+                        <div class="popular-badge">RECOMMENDED</div>
+                        <div class="pricing-header">
+                            <h3 class="plan-name">Standard Edit</h3>
+                            <div class="price">₹1500<span class="discount-badge">SAVE ₹450</span></div>
+                            <p class="price-duration"><span class="original-price">₹1950</span> for first-time clients</p>
+                        </div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> <strong>Everything in Basic</strong></li>
+                            <li><i class="fas fa-check"></i> Up to 15 minutes video</li>
+                            <li><i class="fas fa-check"></i> B-roll insertion</li>
+                            <li><i class="fas fa-check"></i> Advanced color grading</li>
+                            <li><i class="fas fa-check"></i> Sound design & effects</li>
+                            <li><i class="fas fa-check"></i> Custom thumbnail included</li>
+                            <li><i class="fas fa-check"></i> Chapters/timestamps</li>
+                            <li><i class="fas fa-check"></i> 2-day delivery</li>
+                            <li><i class="fas fa-check"></i> 2 revisions</li>
+                        </ul>
+                        <a href="https://wa.me/917780870376?text=Hi%20ShredFX!%20I%20want%20to%20order%20Standard%20YouTube%20Edit%20(₹1500)" 
+                           class="pricing-btn" target="_blank">
+                           Order Now
+                        </a>
+                    </div>
+
+                    <!-- Premium YouTube -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="plan-name">Premium Edit</h3>
+                            <div class="price">₹2500<span class="discount-badge">SAVE ₹750</span></div>
+                            <p class="price-duration"><span class="original-price">₹3250</span> for first-time clients</p>
+                        </div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> <strong>Everything in Standard</strong></li>
+                            <li><i class="fas fa-check"></i> Up to 20 minutes video</li>
+                            <li><i class="fas fa-check"></i> Custom animations</li>
+                            <li><i class="fas fa-check"></i> Visual effects (VFX)</li>
+                            <li><i class="fas fa-check"></i> Multiple thumbnail options (3)</li>
+                            <li><i class="fas fa-check"></i> SEO optimization tips</li>
+                            <li><i class="fas fa-check"></i> Script feedback</li>
+                            <li><i class="fas fa-check"></i> 24-hour delivery</li>
+                            <li><i class="fas fa-check"></i> Unlimited revisions</li>
+                        </ul>
+                        <a href="https://wa.me/917780870376?text=Hi%20ShredFX!%20I%20want%20to%20order%20Premium%20YouTube%20Edit%20(₹2500)" 
+                           class="pricing-btn" target="_blank">
+                           Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Package Deals -->
+    <section class="packages-section" id="packages">
+        <div class="container">
+            <h2 class="section-title">Package <span class="highlight">Deals</span></h2>
+            <p class="section-subtitle">Save more with bundled services</p>
+            
+            <div class="package-card">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Monthly Content Creator Package</h2>
+                <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 30px;">Perfect for YouTubers & Instagram creators</p>
+                
+                <div class="price" style="font-size: 3.5rem;">₹3000<span class="discount-badge" style="background: #ff4757; font-size: 1rem;">SAVE ₹1500</span></div>
+                <p class="price-duration">per month <span class="original-price" style="font-size: 1.5rem;">₹4500</span></p>
+                
+                <div class="package-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon"><i class="fas fa-film"></i></div>
+                        <h4>4 Reels/Shorts</h4>
+                        <p>Premium editing</p>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon"><i class="fas fa-video"></i></div>
+                        <h4>2 YouTube Videos</h4>
+                        <p>Up to 15 mins each</p>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon"><i class="fas fa-image"></i></div>
+                        <h4>6 Thumbnails</h4>
+                        <p>Custom designs</p>
+                    </div>
+                </div>
+                
+                <ul class="features-list" style="max-width: 600px; margin: 40px auto;">
+                    <li><i class="fas fa-check"></i> Priority support</li>
+                    <li><i class="fas fa-check"></i> Dedicated editor</li>
+                    <li><i class="fas fa-check"></i> Weekly content calendar</li>
+                    <li><i class="fas fa-check"></i> Trend research included</li>
+                    <li><i class="fas fa-check"></i> Unlimited revisions</li>
+                    <li><i class="fas fa-check"></i> 24/7 WhatsApp support</li>
+                </ul>
+                
+                <a href="https://wa.me/917780870376?text=Hi%20ShredFX!%20I%20want%20to%20subscribe%20to%20Monthly%20Content%20Creator%20Package%20(₹3000/month)" 
+                   class="pricing-btn" style="max-width: 300px; margin: 0 auto;" target="_blank">
+                   Subscribe Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Working Process -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">How It <span class="highlight">Works</span></h2>
+            <p class="section-subtitle">Simple 4-step process to get your videos edited</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Contact & Discuss</h3>
+                    <p>Message me on WhatsApp with your requirements and raw footage</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Quote & Payment</h3>
+                    <p>I'll send you a quote. Pay 50% advance to start work</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Editing & Preview</h3>
+                    <p>I'll edit and send you a preview within the promised time</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Revisions & Delivery</h3>
+                    <p>Request revisions if needed. Pay balance and get final files</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="index.html" class="footer-logo">
+                        <img src="https://ik.imagekit.io/k6lrn9lgb/New%20Project%205%20_BD7D037_.png" alt="ShredFX Logo">
+                        <span>Shred<span class="fx">FX</span></span>
+                    </a>
+                    <p>Professional video editing services for creators and businesses.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/shredfx_?igsh=cXZnMzdjcGMxd2ti" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/917780870376" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:edits.shredfx@gmail.com"><i class="far fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/portfolio.html">Portfolio</a></li>
+                        <li><a href="/services.html">Services</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#reels">Reels Editing</a></li>
+                        <li><a href="#youtube">YouTube Videos</a></li>
+                        <li><a href="#thumbnails">Thumbnail Design</a></li>
+                        <li><a href="#packages">Package Deals</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> +91 7780870376</li>
+                        <li><i class="far fa-envelope"></i> edits.shredfx@gmail.com</li>
+                        <li><i class="fab fa-instagram"></i> @shredfx_</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShredFX. All rights reserved.</p>
+                <p>Made with ❤️ for creators</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'rgba(10, 10, 10, 0.98)';
+                navLinks.style.padding = '20px';
+                navLinks.style.gap = '20px';
+                navLinks.style.borderTop = '1px solid #333';
+            }
+        });
+
+        // Close menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'row';
+                navLinks.style.position = 'static';
+                navLinks.style.background = 'transparent';
+                navLinks.style.padding = '0';
+                navLinks.style.borderTop = 'none';
+            } else {
+                navLinks.style.display = 'none';
+            }
+        });
+
+        // WhatsApp message auto-fill
+        const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+        whatsappLinks.forEach(link => {
+            if (!link.getAttribute('href').includes('text=')) {
+                const service = link.closest('.pricing-card')?.querySelector('.plan-name')?.textContent || 'editing service';
+                link.href = link.href + `?text=Hi%20ShredFX!%20I%20want%20to%20order%20${encodeURIComponent(service)}`;
+            }
+        });
+
+        // Highlight current page in nav
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.href === window.location.href || 
+                (window.location.pathname.includes('services') && link.href.includes('services.html'))) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add animation to pricing cards on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all pricing cards
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
